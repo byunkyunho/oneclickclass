@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>줌 바로가기</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename=data['css_file_name'] )}}">
+    <script src="{{ url_for('static', filename='js/change_button.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/direct_open.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/click_zoom_count.js') }}"></script>
+    <script>
+        load_data = {{data|tojson}}
+        data = load_data['schedule_data'];
+        select_data = data['select'];
+        hyperlink = load_data['hyperlink'];
+        max_class = load_data['max_class'];
+        school = load_data['school'];
+        grade_class = load_data['grade_class'];
+        class_time = load_data['class_time'];
+    </script>
+</head>
+<body> 
+    <center>
+        <div style='margin-top:3%;margin-bottom:20px;'>   
+            <select  class='select_box' id="id-week"  onchange="change_buttons(false)" >
+                {% for week in ['월', '화', '수', '목', '금'] %}
+                    <option value ={{loop.index}} >{{week + '요일'}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <input type='button' class="w3-btn w3-white w3-border w3-border-green w3-round"  id ="direct" value="바로가기" onclick="direct_open()" ></input>
+        </div>
+        {% for id in range(data['max_class']) %}
+            <div>
+                <button class="w3-btn w3-white w3-border w3-border-blue w3-round"  id ="{{id}}" ></button>
+            </div>
+        {% endfor %}
+    </center>
+    <script>
+            change_buttons(true);
+    </script>
+</body>
+</html>

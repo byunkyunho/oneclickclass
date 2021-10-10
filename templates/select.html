@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>줌 바로가기</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename=data['css_file_name'] )}}">
+    <script src="{{ url_for('static', filename='js/button_list.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/click_zoom_count.js') }}"></script>
+    <script>
+        load_data = {{data|tojson}}
+        schedule_data = load_data['schedule_data'];
+        url_data = load_data['url']
+        school = load_data['school']
+        hyperlink = load_data['hyperlink']
+        grade_class = load_data['grade_class']
+        client_ip = load_data['client_ip']
+    </script>
+</head>
+<body>
+    <center style='margin-top:2%'>
+        {% for id in data['schedule_data'] %}
+            <div>
+                <button class='w3-btn w3-white w3-border w3-border-blue w3-round' id={{id}}>{{id}}</button>
+            </div>
+        {% endfor %}
+    </center>
+    <script>
+        set_button()
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>visit_data</title>
+</head>
+<body>
+    <h1>{{data_len}}</h1>
+    {% for date, value in date_data.items() %}
+        <h3 style='margin:5px'>{{date}} {{value}}</h2>
+    {% endfor %}
+    {% for time, data in visit_data %}
+        <h5 style='font-size:50%'>{{time}} : {{data}}</h2>
+    {% endfor %}
+</body>
+</html>

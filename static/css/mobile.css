@@ -1,0 +1,19 @@
+
+.select_box{
+    padding-bottom:10px;
+    padding-top:10px;
+    font-size:20px;
+    width:80%;
+       text-align-last: center;
+       text-align: center;
+    height:10%;
+}
+
+button, input{
+    width:80%;
+    font-size:20px;
+    margin-top:15px;
+    margin-bottom:15px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
