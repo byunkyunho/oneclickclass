@@ -5,13 +5,13 @@ import datetime
 class firebase_DB:
     def __init__(self):
         self.auth_data = {
-            "apiKey": None,
-            "authDomain": None,
-            "databaseURL":None,
-            "projectId": None,
-            "storageBucket": None,
-            "messagingSenderId": None,
-            "appId": None
+            "apiKey": "개인키 숨김",
+            "authDomain": "개인키 숨김",
+            "databaseURL": "개인키 숨김",
+            "projectId": "개인키 숨김",
+            "storageBucket": "개인키 숨김",
+            "messagingSenderId": "개인키 숨김",
+            "appId": "개인키 숨김"
         } 
         self.DB = pyrebase.initialize_app(self.auth_data).database()
         self.get_data_count = self.get_data_cycle = 20
