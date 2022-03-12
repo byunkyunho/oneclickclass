@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from firebase_handler import firebase_DB
 
 app = Flask(__name__)
@@ -53,10 +53,11 @@ def write_visit(user_info, client_ip,  environment,school, grade, Class, page):
 @app.route('/<school>/<int:grade>/<int:Class>')
 
 def main(school, grade, Class):
+
     schedule_data = db_handler.get_data(school, grade, Class)
     environment, user_info, client_ip = get_environment(request)
     css_file_name, hyperlink = get_file_name(environment)
-    write_visit(user_info, client_ip, environment,school, grade, Class, 'main')
+    write_visit(user_info,client_ip, environment,school, grade, Class, 'main')
     max_class = get_max_class(schedule_data)
     
     return render_template('main.html',data={'grade_class':f'{grade}학년 {Class}반' ,
