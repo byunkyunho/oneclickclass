@@ -1,14 +1,14 @@
-
 import pyrebase 
 import datetime
+import time
 
 class firebase_DB:
     def __init__(self):
         self.auth_data = {
-            "apiKey": "개인키 숨김",
+            "apiKey":"개인키 숨김",
             "authDomain": "개인키 숨김",
             "databaseURL": "개인키 숨김",
-            "projectId": "개인키 숨김",
+            "projectId":"개인키 숨김",
             "storageBucket": "개인키 숨김",
             "messagingSenderId": "개인키 숨김",
             "appId": "개인키 숨김"
@@ -24,12 +24,12 @@ class firebase_DB:
             self.get_data_count += 1
         return self.main_data[school]['schedule_data'][grade][Class]
 
+    def get_class_time(self, school):
+        return self.main_data[school]['class_time']
+
     def write_visit(self, school, environment):
         time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S %f")[:-4]
         self.DB.child("oneclickclass").child(school).child("visit").update({time:environment})
-
-    def get_class_time(self, school):
-        return self.main_data[school]['class_time']
 
     def add_school(self,school_name, grade, schedule_data):
         self.DB.child("oneclickclass").child(school_name).child('schedule_data').child(grade).update(schedule_data)
